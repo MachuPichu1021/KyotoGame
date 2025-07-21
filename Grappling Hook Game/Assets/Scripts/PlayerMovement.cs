@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Ground Movement")]
+    [Header("Speeds")]
     [SerializeField] private float walkSpeed;
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float slideSpeed;
+    [SerializeField] public float wallRunSpeed;
     [SerializeField] private float groundDrag;
     [Tooltip("The max difference between movespeed and desired movespeed before the game decides to lerp")]
     [SerializeField] private float moveSpeedTolerance;
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] private float playerHeight;
     [SerializeField] private LayerMask groundLayer;
-    private bool isOnGround;
+    [HideInInspector] public bool isOnGround;
 
     [Header("Slope Handling")]
     [SerializeField] private float maxSlopeAngle;
@@ -49,7 +50,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     private MovementState state;
-    public bool sliding;
+    [HideInInspector] public bool sliding;
+    [HideInInspector] public bool wallRunning;
+    [HideInInspector] public bool wallRight, wallLeft;
 
     [Header("Keybinds")]
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
@@ -62,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         sprinting,
         crouching,
         sliding,
+        wallRunning,
         air
     }
 
@@ -80,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         isOnGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, groundLayer);
 
         GetInput();
-        //SpeedControl();
+        SpeedControl();
         StateHandler();
 
         if (isOnGround) rb.drag = groundDrag;
@@ -99,6 +103,11 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.sliding;
             if (IsOnSlope() && rb.velocity.y < 0.1f) desiredMoveSpeed = slideSpeed;
             else desiredMoveSpeed = sprintSpeed;
+        }
+        else if (wallRunning)
+        {
+            state = MovementState.wallRunning;
+            desiredMoveSpeed = wallRunSpeed;
         }
         else if (isOnGround && Input.GetKey(crouchKey))
         {
@@ -142,6 +151,28 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
 
+        if (Input.GetKey(jumpKey) && canJump && wallRunning)
+        {
+            canJump = false;
+
+            if (wallLeft && !Input.GetKey(KeyCode.D) || wallRight && !Input.GetKey(KeyCode.A)) Jump();
+
+            if (wallRight && Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(jumpStrength * 3.2f * -orientation.right, ForceMode.Impulse);
+                rb.AddForce(jumpStrength * 0.35f * orientation.up, ForceMode.Impulse);
+            }
+            if (wallLeft && Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(jumpStrength * 3.2f * orientation.right, ForceMode.Impulse);
+                rb.AddForce(jumpStrength * 0.35f * orientation.up, ForceMode.Impulse);
+            }
+
+            rb.AddForce(jumpStrength * orientation.forward, ForceMode.Impulse);
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+
         if (Input.GetKeyDown(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
@@ -159,9 +190,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsOnSlope()) rb.AddForce(10 * moveSpeed * GetSlopeMoveDirection(moveDirection), ForceMode.Force);
         else if (isOnGround) rb.AddForce(10 * moveSpeed * moveDirection.normalized, ForceMode.Force);
-        else rb.AddForce(10 * moveSpeed * airSpeedMultiplier * moveDirection.normalized, ForceMode.Force);
+        else if (!wallRunning) rb.AddForce(10 * moveSpeed * airSpeedMultiplier * moveDirection.normalized, ForceMode.Force);
 
-        rb.useGravity = !IsOnSlope();
+        if (!wallRunning) rb.useGravity = !IsOnSlope();
     }
 
     private void SpeedControl()
@@ -177,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
             if (flatVel.magnitude > moveSpeed)
             {
                 Vector3 limitVel = flatVel.normalized * moveSpeed;
-                rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.y);
+                rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.z);
             }
         }
     }

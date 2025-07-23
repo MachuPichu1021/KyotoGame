@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float slideSpeed;
-    [SerializeField] public float wallRunSpeed;
+    [SerializeField] private float wallRunSpeed;
+    [SerializeField] private float swingSpeed;
     [SerializeField] private float groundDrag;
     [Tooltip("The max difference between movespeed and desired movespeed before the game decides to lerp")]
     [SerializeField] private float moveSpeedTolerance;
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool sliding;
     [HideInInspector] public bool wallRunning;
     [HideInInspector] public bool wallRight, wallLeft;
+    [HideInInspector] public bool swinging;
 
     [Header("Keybinds")]
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
@@ -66,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         crouching,
         sliding,
         wallRunning,
+        swinging,
         air
     }
 
@@ -84,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         isOnGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, groundLayer);
 
         GetInput();
-        SpeedControl();
+        if (state != MovementState.swinging) SpeedControl();
         StateHandler();
 
         if (isOnGround) rb.drag = groundDrag;
@@ -108,6 +111,11 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.wallRunning;
             desiredMoveSpeed = wallRunSpeed;
+        }
+        else if (swinging)
+        {
+            state = MovementState.swinging;
+            desiredMoveSpeed = swingSpeed;
         }
         else if (isOnGround && Input.GetKey(crouchKey))
         {
@@ -186,6 +194,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (swinging) return;
+
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (IsOnSlope()) rb.AddForce(10 * moveSpeed * GetSlopeMoveDirection(moveDirection), ForceMode.Force);

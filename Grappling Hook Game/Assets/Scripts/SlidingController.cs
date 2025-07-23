@@ -18,7 +18,7 @@ public class SlidingController : MonoBehaviour
     [SerializeField] private float slideYScale;
     private float startYScale;
 
-    [Header("KeyCodes")]
+    [Header("Keybinds")]
     [SerializeField] private KeyCode slideKey = KeyCode.LeftControl;
 
     private float horizontalInput, verticalInput;

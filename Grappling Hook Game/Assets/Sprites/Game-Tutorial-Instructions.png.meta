@@ -1,0 +1,350 @@
+fileFormatVersion: 2
+guid: 27ea455b6397d3444a2589ad322a3427
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Game-Tutorial-Instructions_0
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1256
+        width: 500
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df81a8ca741e6d643ace1c1f9830739d
+      internalID: 1512245224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-Tutorial-Instructions_1
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 1272
+        width: 332
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0431a42ac7499fb45a637a9bc24ffab4
+      internalID: 1727157049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-Tutorial-Instructions_2
+      rect:
+        serializedVersion: 2
+        x: 1831
+        y: 1007
+        width: 1272
+        height: 476
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094c636372b4fd94ea3731f8dee2c3ef
+      internalID: -376779124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-Tutorial-Instructions_32
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 962
+        width: 465
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e385d2bd850a61f4aaca07fa9aaa5b32
+      internalID: 271543797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-Tutorial-Instructions_33
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 986
+        width: 403
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c98e7235232c26449b7c2ec090c2e82
+      internalID: -897174751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-Tutorial-Instructions_51
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 692
+        width: 473
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc218efa632fe584594870f42e5a97ad
+      internalID: 466184044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-Tutorial-Instructions_52
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 684
+        width: 894
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda0b3ccd97c1fe468ecb8d7fa698bd5
+      internalID: -703506544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: bb2e8378744d7bb479f138d381ac3dbf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Game-Tutorial-Instructions_0: 1512245224
+      Game-Tutorial-Instructions_1: 1727157049
+      Game-Tutorial-Instructions_10: 14082898
+      Game-Tutorial-Instructions_11: -556722318
+      Game-Tutorial-Instructions_12: -679343958
+      Game-Tutorial-Instructions_13: -359250726
+      Game-Tutorial-Instructions_14: -560998482
+      Game-Tutorial-Instructions_15: 1037026777
+      Game-Tutorial-Instructions_16: 1704610335
+      Game-Tutorial-Instructions_17: 1177202396
+      Game-Tutorial-Instructions_18: 1957359541
+      Game-Tutorial-Instructions_19: 1201734039
+      Game-Tutorial-Instructions_2: -376779124
+      Game-Tutorial-Instructions_20: 238287462
+      Game-Tutorial-Instructions_21: -1905108971
+      Game-Tutorial-Instructions_22: -1277517889
+      Game-Tutorial-Instructions_23: -1026474219
+      Game-Tutorial-Instructions_24: -2050341468
+      Game-Tutorial-Instructions_25: -219936146
+      Game-Tutorial-Instructions_26: -2095372414
+      Game-Tutorial-Instructions_27: -1694716828
+      Game-Tutorial-Instructions_28: 1924206856
+      Game-Tutorial-Instructions_29: 623606180
+      Game-Tutorial-Instructions_3: -1001834234
+      Game-Tutorial-Instructions_30: 1475286694
+      Game-Tutorial-Instructions_31: -1319049015
+      Game-Tutorial-Instructions_32: 271543797
+      Game-Tutorial-Instructions_33: -897174751
+      Game-Tutorial-Instructions_34: -1681115631
+      Game-Tutorial-Instructions_35: 194363158
+      Game-Tutorial-Instructions_36: 989444563
+      Game-Tutorial-Instructions_37: -453947394
+      Game-Tutorial-Instructions_38: 289392155
+      Game-Tutorial-Instructions_39: -298162596
+      Game-Tutorial-Instructions_4: 1450143195
+      Game-Tutorial-Instructions_40: 293046947
+      Game-Tutorial-Instructions_41: 59360720
+      Game-Tutorial-Instructions_42: -634948535
+      Game-Tutorial-Instructions_43: 209559868
+      Game-Tutorial-Instructions_44: -1704932751
+      Game-Tutorial-Instructions_45: -1772847610
+      Game-Tutorial-Instructions_46: 6478680
+      Game-Tutorial-Instructions_47: 1374292266
+      Game-Tutorial-Instructions_48: 1656395298
+      Game-Tutorial-Instructions_49: 1755729969
+      Game-Tutorial-Instructions_5: 568872230
+      Game-Tutorial-Instructions_50: 338681981
+      Game-Tutorial-Instructions_51: 466184044
+      Game-Tutorial-Instructions_52: -703506544
+      Game-Tutorial-Instructions_53: -1075377947
+      Game-Tutorial-Instructions_54: 1445871336
+      Game-Tutorial-Instructions_55: 1239540956
+      Game-Tutorial-Instructions_56: 12939147
+      Game-Tutorial-Instructions_57: 1389041070
+      Game-Tutorial-Instructions_58: -509623168
+      Game-Tutorial-Instructions_59: -1345705171
+      Game-Tutorial-Instructions_6: -469064874
+      Game-Tutorial-Instructions_60: -2120574289
+      Game-Tutorial-Instructions_61: 1172575307
+      Game-Tutorial-Instructions_62: 1872505331
+      Game-Tutorial-Instructions_63: -1618232222
+      Game-Tutorial-Instructions_64: 2069419988
+      Game-Tutorial-Instructions_65: 407769646
+      Game-Tutorial-Instructions_66: 241304633
+      Game-Tutorial-Instructions_67: -1489232872
+      Game-Tutorial-Instructions_7: 1747653670
+      Game-Tutorial-Instructions_8: 205122173
+      Game-Tutorial-Instructions_9: -775560992
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

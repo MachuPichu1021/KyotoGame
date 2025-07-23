@@ -238,9 +238,9 @@ public class PlayerMovement : MonoBehaviour
                 float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
                 float slopeAngleIncrease = 1 + (slopeAngle / 90);
 
-                time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
+                time += Time.deltaTime * 3 * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
             }
-            else time += Time.deltaTime;
+            else time += Time.deltaTime * 3;
 
             yield return null;
         }

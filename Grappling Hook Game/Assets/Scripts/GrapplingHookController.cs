@@ -36,6 +36,10 @@ public class GrapplingHookController : MonoBehaviour
     [SerializeField] private Sprite[] grappleExtensionSprites;
     [SerializeField] private Sprite grappleActiveSprite;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip grappleShootSFX;
+    [SerializeField] private AudioClip grapplePullSFX;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -80,6 +84,7 @@ public class GrapplingHookController : MonoBehaviour
         lr.positionCount = 2;
         currentGrapplePosition = grappleOutPoint.position;
 
+        AudioManager.instance.PlaySound(grappleShootSFX);
         StartCoroutine(GrappleExtendAnimation());
     }
 
@@ -109,6 +114,7 @@ public class GrapplingHookController : MonoBehaviour
         if (Input.GetKey(KeyCode.W)) rb.AddForce(forwardThrust * Time.deltaTime * orientation.forward, ForceMode.Force);
         if (Input.GetKey(KeyCode.S)) rb.AddForce(forwardThrust * Time.deltaTime * -orientation.forward, ForceMode.Force);
 
+        if (Input.GetKeyDown(KeyCode.Mouse1)) AudioManager.instance.PlaySound(grapplePullSFX);
         if (Input.GetKey(KeyCode.Mouse1))
         {
             Vector3 direction = swingPoint - transform.position;

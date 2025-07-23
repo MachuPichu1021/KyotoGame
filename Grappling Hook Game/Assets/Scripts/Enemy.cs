@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform orientation;
     [SerializeField] private Transform projectileOutPoint;
 
     [Header("Projectile Variables")]
@@ -15,9 +14,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     private float projectileTimer;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip shootSFX;
+    private AudioSource source;
+
     private void Start()
     {
         projectileTimer = projectileCooldown;
+
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -34,13 +39,15 @@ public class Enemy : MonoBehaviour
     {
         Projectile projectile = Instantiate(projectilePrefab, projectileOutPoint.position, projectileOutPoint.rotation).GetComponent<Projectile>();
         projectile.lifetime = projectileLifeTime;
-        projectile.GetComponent<Rigidbody>().velocity = projectileSpeed * orientation.forward;
+        projectile.GetComponent<Rigidbody>().velocity = projectileSpeed * projectileOutPoint.forward;
+        source.PlayOneShot(shootSFX);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent(out Projectile _)) return;
 
-        print("Enemy Got Hit");
+        Destroy(gameObject);
+        //print("Enemy Got Hit");
     }
 }

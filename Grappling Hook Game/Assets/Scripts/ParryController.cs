@@ -33,7 +33,7 @@ public class ParryController : MonoBehaviour
     private readonly Vector2 parryPos2 = new Vector2(1945, -100);
     private readonly Vector2 parryPos3 = new Vector2(2600, -500);
 
-    [Header("Parry SFX")]
+    [Header("Audio")]
     [SerializeField] private AudioClip parryHitSFX;
     [SerializeField] private AudioClip parryCooldownSFX;
 

@@ -10,13 +10,15 @@ public class SlidingController : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement playerMovement;
 
-    [Header("Sldiing")]
+    [Header("Sliding")]
     [SerializeField] private float maxSlideTime;
     [SerializeField] private float slideForce;
     private float slideTimer;
 
     [SerializeField] private float slideYScale;
     private float startYScale;
+
+    [SerializeField] private AudioClip slideSFX;
 
     [Header("Keybinds")]
     [SerializeField] private KeyCode slideKey = KeyCode.LeftControl;
@@ -53,6 +55,7 @@ public class SlidingController : MonoBehaviour
         rb.AddForce(5 * Vector3.down, ForceMode.Impulse);
 
         slideTimer = maxSlideTime;
+        AudioManager.instance.PlaySound(slideSFX);
     }
 
     private void Sliding()
@@ -74,5 +77,6 @@ public class SlidingController : MonoBehaviour
     {
         playerMovement.sliding = false;
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
+        AudioManager.instance.Stop();
     }
 }

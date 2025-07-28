@@ -23,4 +23,9 @@ public class AudioManager : MonoBehaviour
     {
         source.PlayOneShot(sfx);
     }
+
+    public void Stop()
+    {
+        source.Stop();
+    }
 }

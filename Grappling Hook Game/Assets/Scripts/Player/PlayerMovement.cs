@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpStrength;
     [SerializeField] private float jumpCooldown;
     [SerializeField] private float airSpeedMultiplier;
+    [SerializeField] private AudioClip jumpSFX;
     private bool canJump;
 
     [Header("Crouching")]
@@ -188,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             rb.AddForce(jumpStrength * orientation.forward, ForceMode.Impulse);
+            AudioManager.instance.PlaySound(jumpSFX);
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -265,6 +267,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(jumpStrength * Vector3.up, ForceMode.Impulse);
+        AudioManager.instance.PlaySound(jumpSFX);
     }
 
     private void ResetJump()

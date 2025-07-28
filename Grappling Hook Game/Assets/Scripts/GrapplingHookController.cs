@@ -8,7 +8,6 @@ public class GrapplingHookController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform orientation;
-    [SerializeField] private LineRenderer lr;
     [SerializeField] private Transform grappleOutPoint;
     [SerializeField] private Transform cam;
     [SerializeField] private Transform player;
@@ -18,7 +17,6 @@ public class GrapplingHookController : MonoBehaviour
 
     private float maxSwingDistance = 25;
     private Vector3 swingPoint;
-    private Vector3 currentGrapplePosition;
     private SpringJoint joint;
 
     [Header("Speeds")]
@@ -35,6 +33,9 @@ public class GrapplingHookController : MonoBehaviour
     [SerializeField] private Image grappleImage;
     [SerializeField] private Sprite[] grappleExtensionSprites;
     [SerializeField] private Sprite grappleActiveSprite;
+    [SerializeField] private Image crosshairImage;
+    [SerializeField] private Sprite crosshairNoGrapple;
+    [SerializeField] private Sprite crosshairCanGrapple;
 
     [Header("Audio")]
     [SerializeField] private AudioClip grappleShootSFX;
@@ -55,11 +56,8 @@ public class GrapplingHookController : MonoBehaviour
         CheckForSwingPoints();
 
         if (joint != null) AirMovement();
-    }
 
-    private void LateUpdate()
-    {
-        //DrawRope();
+        crosshairImage.sprite = predictionPoint.gameObject.activeInHierarchy ? crosshairCanGrapple : crosshairNoGrapple;
     }
 
     private void StartSwing()
@@ -81,9 +79,6 @@ public class GrapplingHookController : MonoBehaviour
         joint.damper = 7;
         joint.massScale = 4.5f;
 
-        lr.positionCount = 2;
-        currentGrapplePosition = grappleOutPoint.position;
-
         AudioManager.instance.PlaySound(grappleShootSFX);
         StartCoroutine(GrappleExtendAnimation());
     }
@@ -91,19 +86,8 @@ public class GrapplingHookController : MonoBehaviour
     private void StopSwing()
     {
         playerMovement.swinging = false;
-        lr.positionCount = 0;
         grappleImage.gameObject.SetActive(false);
         Destroy(joint);
-    }
-
-    private void DrawRope()
-    {
-        if (joint == null) return;
-
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, swingPoint, Time.deltaTime * 8);
-
-        lr.SetPosition(0, grappleOutPoint.position);
-        lr.SetPosition(1, currentGrapplePosition);
     }
 
     private void AirMovement()

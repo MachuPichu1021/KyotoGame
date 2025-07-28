@@ -83,12 +83,10 @@ public class ParryController : MonoBehaviour
             projectile.lifetime = 10;
             float projSpeed = projRB.velocity.magnitude;
 
-            projRB.velocity = projSpeed * 2 * cam.transform.forward.normalized;
-
-            /*Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+            Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
             Array.Sort(enemies, (e1, e2) => Vector3.Distance(transform.position, e1.transform.position).CompareTo(Vector3.Distance(transform.position, e2.transform.position)));
             Enemy nearestEnemy = enemies[0];
-            projRB.velocity = projSpeed * 2 * (nearestEnemy.transform.position - transform.position).normalized;*/
+            projRB.velocity = projSpeed * 2 * (nearestEnemy.transform.position - transform.position).normalized;
 
             parryActiveTimer += 0.1f;
             hasParried = true;

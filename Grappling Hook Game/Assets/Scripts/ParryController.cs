@@ -94,7 +94,7 @@ public class ParryController : MonoBehaviour
             StartCoroutine(Hitstop());
             StartCoroutine(CameraZoom());
         }
-        else { /* run a death method here */  print("Got Hit Stupid"); }
+        else Application.Quit();
     }
 
     private void StopParry()

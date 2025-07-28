@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] private float playerHeight;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask lavaLayer;
     [HideInInspector] public bool isOnGround;
 
     [Header("Slope Handling")]
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        isOnGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, groundLayer);
+        isOnGround = IsOnGround();
 
         GetInput();
         if (state != MovementState.swinging) SpeedControl();
@@ -260,6 +261,12 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = true;
         exitingSlope = false;
+    }
+
+    private bool IsOnGround()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, lavaLayer)) Application.Quit();
+        return Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, groundLayer);
     }
 
     public  bool IsOnSlope()

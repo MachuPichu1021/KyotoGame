@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Orientation")]
     [SerializeField] private Transform orientation;
 
+    [Header("Footsteps")]
+    [SerializeField] private AudioClip[] footstepSFXs;
+    private float footstepCooldown;
+    private float footstepTimer;
+
     private float horizontalInput, verticalInput;
     private Vector3 moveDirection;
 
@@ -93,6 +98,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (isOnGround) rb.drag = groundDrag;
         else rb.drag = groundDrag * airSpeedMultiplier;
+
+        footstepCooldown = 2.5f / moveSpeed;
+        footstepTimer -= Time.deltaTime;
+        if (footstepTimer <= 0 && (horizontalInput != 0 || verticalInput != 0) && 
+            (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.wallRunning || state == MovementState.crouching)) PlayFootstep();
     }
 
     private void FixedUpdate()
@@ -282,5 +292,12 @@ public class PlayerMovement : MonoBehaviour
     public  Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+    }
+
+    private void PlayFootstep()
+    {
+        AudioClip footstep = footstepSFXs[Random.Range(0, footstepSFXs.Length)];
+        AudioManager.instance.PlaySound(footstep);
+        footstepTimer = footstepCooldown;
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1752013612876684720}
   - component: {fileID: -4752561695660239221}
   m_Layer: 0
-  m_Name: Test Projectile
+  m_Name: Soldier Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

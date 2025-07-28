@@ -1015,9 +1015,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  lavaLayer:
+    serializedVersion: 2
+    m_Bits: 512
   isOnGround: 0
   maxSlopeAngle: 45
   orientation: {fileID: 3792580}
+  footstepSFXs: []
   sliding: 0
   wallRunning: 0
   wallRight: 0
@@ -1077,13 +1081,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 3792580}
-  lr: {fileID: 903390073}
   grappleOutPoint: {fileID: 196751461}
   cam: {fileID: 963194228}
   player: {fileID: 903390067}
   grappleLayer:
     serializedVersion: 2
     m_Bits: 192
+  maxSwingDistance: 30
   horizontalThrust: 2000
   forwardThrust: 3000
   cableExtensionSpeed: 50
@@ -1097,6 +1101,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b138fedbed2025b4a90a97deefe2e626, type: 3}
   - {fileID: 21300000, guid: 140aba497bcee1b429bfeb737ed9b46c, type: 3}
   grappleActiveSprite: {fileID: 21300000, guid: df6350a19dbd00a478785be166b1d55c, type: 3}
+  crosshairImage: {fileID: 0}
+  crosshairNoGrapple: {fileID: 0}
+  crosshairCanGrapple: {fileID: 0}
+  grappleShootSFX: {fileID: 0}
+  grapplePullSFX: {fileID: 0}
 --- !u!120 &903390073
 LineRenderer:
   m_ObjectHideFlags: 0

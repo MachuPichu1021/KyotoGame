@@ -175,6 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2997344967065017808}
+  - component: {fileID: 5657869396622377063}
   m_Layer: 0
   m_Name: Bomb Spider Enemy
   m_TagString: Untagged
@@ -200,6 +201,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5657869396622377063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509461505108821866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc2ddafae76a234fb7de6ad4f40590e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileOutPoint: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  hitpoints: 1
+  projectileSpeed: 0
+  projectileLifeTime: 0
+  projectileCooldown: 0
+  attackRange: 0
+  projectilePrefab: {fileID: 0}
+  shootSFX: {fileID: 0}
 --- !u!1 &6089961438338806308
 GameObject:
   m_ObjectHideFlags: 0

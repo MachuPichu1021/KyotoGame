@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform projectileOutPoint;
+    private NavMeshAgent agent;
+    private Transform player;
+    [SerializeField] private LayerMask groundLayer, playerLayer;
+
+    [Header("Enemy Stats")]
+    [SerializeField] private int hitpoints;
 
     [Header("Projectile Variables")]
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileLifeTime;
     [SerializeField] private float projectileCooldown;
+    [SerializeField] private float attackRange;
+    private bool playerInAttackRange;
     [SerializeField] private GameObject projectilePrefab;
     private float projectileTimer;
 
@@ -23,15 +32,26 @@ public class Enemy : MonoBehaviour
         projectileTimer = projectileCooldown;
 
         source = GetComponent<AudioSource>();
+
+        player = FindObjectOfType<PlayerMovement>().transform;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        projectileTimer -= Time.deltaTime;
-        if (projectileTimer <= 0)
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+
+        if (!playerInAttackRange) agent.SetDestination(player.position);
+        else
         {
-            Shoot();
-            projectileTimer = projectileCooldown;
+            agent.SetDestination(transform.position);
+            transform.LookAt(player);
+            projectileTimer -= Time.deltaTime;
+            if (projectileTimer <= 0)
+            {
+                Shoot();
+                projectileTimer = projectileCooldown;
+            }
         }
     }
 
@@ -47,7 +67,12 @@ public class Enemy : MonoBehaviour
     {
         if (!other.TryGetComponent(out Projectile _)) return;
 
-        Destroy(gameObject);
-        //print("Enemy Got Hit");
+        GetHit();
+    }
+
+    private void GetHit()
+    {
+        hitpoints--;
+        if (hitpoints <= 0) Destroy(gameObject);
     }
 }

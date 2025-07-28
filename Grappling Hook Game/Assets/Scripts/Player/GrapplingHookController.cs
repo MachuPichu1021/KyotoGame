@@ -15,7 +15,7 @@ public class GrapplingHookController : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement playerMovement;
 
-    private float maxSwingDistance = 25;
+    [SerializeField] private float maxSwingDistance = 30;
     private Vector3 swingPoint;
     private SpringJoint joint;
 

@@ -88,13 +88,19 @@ public class ParryController : MonoBehaviour
             Enemy nearestEnemy = enemies[0];
             projRB.velocity = projSpeed * 2 * (nearestEnemy.transform.position - transform.position).normalized;
 
+            if (other.TryGetComponent(out Rocket rocket)) Destroy(rocket);
+
             parryActiveTimer += 0.1f;
             hasParried = true;
             AudioManager.instance.PlaySound(parryHitSFX);
             StartCoroutine(Hitstop());
             StartCoroutine(CameraZoom());
         }
-        else Application.Quit();
+        else
+        {
+            Destroy(projectile.gameObject);
+            Application.Quit();
+        }
     }
 
     private void StopParry()

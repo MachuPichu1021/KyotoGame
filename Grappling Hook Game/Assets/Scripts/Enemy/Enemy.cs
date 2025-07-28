@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Enemy Stats")]
     [SerializeField] private int hitpoints;
+    [SerializeField] private bool lookAtPlayerWhileAttacking;
 
     [Header("Projectile Variables")]
     [SerializeField] private float projectileSpeed;
@@ -45,7 +46,12 @@ public class Enemy : MonoBehaviour
         else
         {
             agent.SetDestination(transform.position);
-            transform.LookAt(player);
+            if (lookAtPlayerWhileAttacking) transform.LookAt(player);
+            else
+            {
+                transform.LookAt(player);
+                transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+            }
             projectileTimer -= Time.deltaTime;
             if (projectileTimer <= 0)
             {
@@ -58,6 +64,7 @@ public class Enemy : MonoBehaviour
     private void Shoot()
     {
         Projectile projectile = Instantiate(projectilePrefab, projectileOutPoint.position, projectileOutPoint.rotation).GetComponent<Projectile>();
+        if (lookAtPlayerWhileAttacking) projectile.transform.LookAt(player);
         projectile.lifetime = projectileLifeTime;
         projectile.GetComponent<Rigidbody>().velocity = projectileSpeed * projectileOutPoint.forward;
         source.PlayOneShot(shootSFX);

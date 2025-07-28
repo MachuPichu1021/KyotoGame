@@ -190,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4653004507215783542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.9}
+  m_LocalPosition: {x: 0, y: 0, z: 3.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -339,12 +339,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   hitpoints: 1
-  projectileSpeed: 0
-  projectileLifeTime: 0
-  projectileCooldown: 0
-  attackRange: 0
-  projectilePrefab: {fileID: 0}
-  shootSFX: {fileID: 0}
+  lookAtPlayerWhileAttacking: 1
+  projectileSpeed: 17.5
+  projectileLifeTime: 8
+  projectileCooldown: 1.5
+  attackRange: 25
+  projectilePrefab: {fileID: 1526254119538913752, guid: 252364a4e65ea28408b2c8a4e1b3b97b, type: 3}
+  shootSFX: {fileID: 8300000, guid: 389beb692c49634458961ebc93f055eb, type: 3}
 --- !u!82 &-731521588226449350
 AudioSource:
   m_ObjectHideFlags: 0

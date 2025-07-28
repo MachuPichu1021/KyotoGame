@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.TryGetComponent(out Projectile _)) return;
         if (other.transform.parent != null && other.transform.parent.TryGetComponent(out PlayerMovement _)) return;
 
         Destroy(gameObject);
